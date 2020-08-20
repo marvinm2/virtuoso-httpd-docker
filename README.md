@@ -7,7 +7,7 @@ This repository is made to create a docker image that can run both Virtuoso and 
 ## Step 1 - Clone this repository
 
 ```bash
-git clone https://github.com/ammar257ammar/virtuoso-httpd-docker.git
+git clone https://github.com/wikipathways/virtuoso-httpd-docker.git
 
 cd virtuoso-httpd-docker
 ```
@@ -39,9 +39,9 @@ docker run --rm --name virtuoso-httpd \
     -e DBA_PASSWORD=PASSWORD_HERE \
     -e SPARQL_UPDATE=true \
     -e DEFAULT_GRAPH=http://example.com \
-    -e SNORQL_ENDPOINT=https://query.wikidata.org/sparql \
-    -e SNORQL_EXAMPLES_REPO=https://api.github.com/repos/egonw/SARS-CoV-2-Queries/contents/sparql \
-    -e SNORQL_TITLE="SNORQL: A SPARQL Explorer - Extended Edition" \
+    -e SNORQL_ENDPOINT=http://sparql.wikipathways.org/sparql \
+    -e SNORQL_EXAMPLES_REPO=https://github.com/wikipathways/SPARQLQueries \
+    -e SNORQL_TITLE="WikiPathways Snorql UI" \
     -v PATH_TO_VIRTUOSO_DATA_FOLDER:/data \
     -v PATH_TO_VIRTUOSO_IMPORT_FOLDER:/import \
     -d virtuoso-httpd
