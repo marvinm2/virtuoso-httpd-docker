@@ -35,10 +35,13 @@ COPY ./load.sh /load.sh
 
 COPY ./entrypoint.sh /entrypoint.sh
 
+COPY ./httpd.conf /etc/apache2/httpd.conf
+
 RUN mkdir -p /usr/local/apache2/htdocs/.well-known
 RUN chmod 755 /virtuoso.sh
 RUN chmod 755 /load.sh
 RUN chmod 755 /entrypoint.sh
+RUN chmod 755 /etc/apache2/httpd.conf
 
 RUN apt-get update && \
     apt-get install -yq libreadline7 openssl crudini && \
