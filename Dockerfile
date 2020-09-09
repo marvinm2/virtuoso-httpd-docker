@@ -35,13 +35,10 @@ COPY ./load.sh /load.sh
 
 COPY ./entrypoint.sh /entrypoint.sh
 
-COPY ./httpd.conf /etc/apache2/httpd.conf
-
 RUN mkdir -p /usr/local/apache2/htdocs/.well-known
 RUN chmod 755 /virtuoso.sh
 RUN chmod 755 /load.sh
 RUN chmod 755 /entrypoint.sh
-RUN chmod 755 /etc/apache2/httpd.conf
 
 RUN apt-get update && \
     apt-get install -yq libreadline7 openssl crudini && \
@@ -51,6 +48,9 @@ RUN apt-get update && \
 		libapr1-dev \
 		libaprutil1-dev \
 		libaprutil1-ldap
+
+COPY    ./httpd.conf    /usr/local/apache2/httpd.conf
+RUN     chmod 755       /usr/local/apache2/httpd.conf
 
 ENV PATH /usr/local/virtuoso-opensource/bin/:$PATH
 ENV PATH /usr/local/apache2/bin:$PATH
