@@ -55,8 +55,9 @@ RUN     chmod 755       /usr/local/apache2/httpd.conf
 ENV PATH /usr/local/virtuoso-opensource/bin/:$PATH
 ENV PATH /usr/local/apache2/bin:$PATH
 
+VOLUME /usr/local/apache2/htdocs
 VOLUME /data
 WORKDIR /data
 EXPOSE 8890 1111 80 443
  
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"] 
